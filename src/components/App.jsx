@@ -6,6 +6,8 @@ import intialContacts from './Contacts.json';
 import Section from './Section';
 import Filter from './Filter';
 import { Wrap } from './App.styled';
+// Мирослав
+
 class App extends Component {
   state = {
     contacts: intialContacts,
