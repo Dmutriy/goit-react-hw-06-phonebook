@@ -39,6 +39,7 @@ const ContactForm = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {
     const isSuccess = onSubmit({ ...values });
     if (!isSuccess) return;
+
     resetForm();
   };
   return (
