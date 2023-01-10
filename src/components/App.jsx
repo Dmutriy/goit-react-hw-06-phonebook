@@ -19,7 +19,11 @@ export function App() {
   }, [contacts]);
 
   function addContact({ name, number }) {
-    if (contacts.find(contact => contact.name === name)) {
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
       alert(`${name} is already in contacts`);
       return;
     }
@@ -30,6 +34,7 @@ export function App() {
       number,
     };
     setContacts([newContact, ...contacts]);
+    return true;
   }
 
   const filterContact = e => {
@@ -52,15 +57,19 @@ export function App() {
   return (
     <Wrap>
       <Section title={`Phonebook`}></Section>
-
       <ContactForm onSubmit={addContact} />
-
       <h2>Contacts</h2>
-      <Filter filter={filter} filterContact={filterContact} />
-      <ContactList
-        contacts={filteredContacts}
-        onDeleteContact={onDeleteContact}
-      />
+      {contacts.length !== 0 ? (
+        <>
+          <Filter filter={filter} filterContact={filterContact} />
+          <ContactList
+            contacts={filteredContacts}
+            onDeleteContact={onDeleteContact}
+          />
+        </>
+      ) : (
+        <h2>Add new contact</h2>
+      )}
     </Wrap>
   );
 }
