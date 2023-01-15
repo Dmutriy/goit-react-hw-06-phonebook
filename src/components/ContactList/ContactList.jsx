@@ -1,30 +1,39 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { List, Item, Text } from './ContactList.styled';
 import Button from '@mui/material/Button';
+//Redux-toolkit
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contactsSlice';
+import { getContacts, getFilter } from 'redux/selectors';
 
-const ContactList = ({ contacts, onDeleteContact }) => {
-  return (
-    <List>
-      {contacts.map(({ id, name, number }) => (
-        <Item key={id}>
-          <Text>
-            {name}: {number}
-          </Text>
-          <Button
-            variant="outlined"
-            size="medium"
-            onClick={() => onDeleteContact(id)}
-          >
-            Del
-          </Button>
-        </Item>
-      ))}
-    </List>
+const ContactList = () => {
+  const { contacts } = useSelector(getContacts);
+
+  const filter = useSelector(getFilter);
+
+  const contactsFiltered = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
-};
 
-export default ContactList;
+  const dispatch = useDispatch();
+
+  if (contactsFiltered) {
+    return (
+      <List>
+        {contactsFiltered.map(({ id, name, number }) => {
+          return (
+            <Item key={id}>
+              {name}: {number}
+              <Button type="button" onClick={() => dispatch(deleteContact(id))}>
+                Delete
+              </Button>
+            </Item>
+          );
+        })}
+      </List>
+    );
+  }
+};
 
 List.propTypes = {
   contacts: PropTypes.arrayOf(
@@ -35,3 +44,5 @@ List.propTypes = {
     })
   ),
 };
+
+export default ContactList;

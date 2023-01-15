@@ -1,5 +1,12 @@
+//Redux-toolkit
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
+import { addContact } from '../../redux/contactsSlice';
+//Formik
 import { Formik } from 'formik';
+//@mui/material/Button
 import Button from '@mui/material/Button';
+//yup
 import * as yup from 'yup';
 import { FormContact, Label, Input, ErrorText } from './ContactForm.styled.js';
 
@@ -35,10 +42,18 @@ const initialValues = {
   number: '',
 };
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
+  const contacts = useSelector(getContacts);
+
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
-    const isSuccess = onSubmit({ ...values });
-    if (!isSuccess) return;
+    console.log(contacts);
+    // const isSuccess = onSubmit({ ...values });
+    // if (!isSuccess) return;
+    contacts.find(contact => contact.contacts.name === values.name)
+      ? alert(`${values.name} is already in contacts`)
+      : dispatch(addContact(values));
 
     resetForm();
   };
