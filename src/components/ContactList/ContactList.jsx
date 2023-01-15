@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { List, Item, Text } from './ContactList.styled';
+import { List, Item } from './ContactList.styled';
 import Button from '@mui/material/Button';
 //Redux-toolkit
 import { useSelector, useDispatch } from 'react-redux';
