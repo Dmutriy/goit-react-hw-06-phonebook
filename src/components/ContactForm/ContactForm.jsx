@@ -51,7 +51,7 @@ const ContactForm = () => {
     console.log(contacts);
     // const isSuccess = onSubmit({ ...values });
     // if (!isSuccess) return;
-    //
+
     contacts.find(contact => contact.contacts.name === values.name)
       ? alert(`${values.name} is already in contacts`)
       : dispatch(addContact(values));
