@@ -48,12 +48,15 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    // const isSuccess = onSubmit({ ...values });
-    // if (!isSuccess) return;
-    // const { contacts } = contacts;
-    contacts.find(contact => contact.name === values.name)
-      ? alert(`${values.name} is already in contacts`)
-      : dispatch(addContact(values));
+    // contacts.find(contact => contact.name === values.name)
+    //   ? alert(`${values.name} is already in contacts`)
+    //   : dispatch(addContact(values));
+
+    if (contacts.find(contact => contact.name === values.name)) {
+      alert(`${values.name} is already in contacts`);
+      return;
+    }
+    dispatch(addContact(values));
 
     resetForm();
   };
