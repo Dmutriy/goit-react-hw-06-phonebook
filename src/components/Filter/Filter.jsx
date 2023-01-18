@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filterChange } from '../../redux/filtersSlice';
+import { filterChange } from '../../redux/filters/filtersSlice';
 
 import { Label, FindInput } from './Filter.styled';
 import PropTypes from 'prop-types';

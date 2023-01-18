@@ -1,7 +1,7 @@
 //Redux-toolkit
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { addContact } from '../../redux/contactsSlice';
+import { getContacts } from 'redux/contacts/selectors';
+import { addContact } from '../../redux/contacts/contactsSlice';
 //Formik
 import { Formik } from 'formik';
 //@mui/material/Button

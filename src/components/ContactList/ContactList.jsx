@@ -3,8 +3,9 @@ import { List, Item } from './ContactList.styled';
 import Button from '@mui/material/Button';
 //Redux-toolkit
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
-import { getContacts, getFilter } from 'redux/selectors';
+import { deleteContact } from '../../redux/contacts/contactsSlice';
+import { getContacts } from 'redux/contacts/selectors';
+import { getFilter } from 'redux/filters/selectors';
 
 const ContactList = () => {
   const contacts = useSelector(getContacts);

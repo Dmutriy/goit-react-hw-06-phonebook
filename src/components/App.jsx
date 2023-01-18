@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { getContacts } from 'redux/contacts/selectors';
 
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
