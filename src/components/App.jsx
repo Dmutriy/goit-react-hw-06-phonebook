@@ -8,7 +8,7 @@ import Filter from './Filter';
 import { Wrap } from './App.styled';
 
 export function App() {
-  const { contacts } = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
 
   return (
     <Wrap>

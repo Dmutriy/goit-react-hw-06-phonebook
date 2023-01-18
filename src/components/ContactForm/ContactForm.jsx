@@ -43,15 +43,11 @@ const initialValues = {
 };
 
 const ContactForm = () => {
-  const { contacts } = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
 
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    // contacts.find(contact => contact.name === values.name)
-    //   ? alert(`${values.name} is already in contacts`)
-    //   : dispatch(addContact(values));
-
     if (contacts.find(contact => contact.name === values.name)) {
       alert(`${values.name} is already in contacts`);
       return;

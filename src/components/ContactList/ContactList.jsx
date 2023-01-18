@@ -7,7 +7,7 @@ import { deleteContact } from '../../redux/contactsSlice';
 import { getContacts, getFilter } from 'redux/selectors';
 
 const ContactList = () => {
-  const { contacts } = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
 
   const filter = useSelector(getFilter);
 
